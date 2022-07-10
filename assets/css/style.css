@@ -4,37 +4,55 @@ header {
   justify-content: space-between;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 15px;
+body {
+  width: 100%;
+  margin: auto;
+  font-family: serif;
+  font-family: "Varela Round", sans-serif;
 }
 
-h2 {
-  font-size: 150%;
-  font-weight: bold;
+#quizField {
+  margin: auto;
+  width: 100%;
+  text-align: center;
 }
 
-div {
-  display: flex;
-  justify-content: center;
+#question {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 20px;
+}
+
+.ansbtn {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+button {
+  padding: 8px 15px;
+  color: white;
+  background-color: forestgreen;
+  border-radius: 5px;
+  border: 0px;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: limegreen;
 }
 
 .startbtn {
+  display: flex;
+  justify-content: center;
   border: none;
   width: 10%;
   background-color: rgb(12, 173, 47);
   border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
-    0px;
   color: hsl(0, 0%, 100%);
-  display: inline-block;
   font-size: 22px;
   line-height: 22px;
   margin: 16px 16px 16px 20px;
   padding: 15px;
-  text-align: center;
   cursor: pointer;
 }
 

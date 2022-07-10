@@ -10,7 +10,7 @@ var questionArr = [
   {
     question: "What is a variable?",
     choices: ["blah", "clah", "cha", "Dah"],
-    answer: 2,
+    answer: "blah",
   },
   {
     question: "What is a function?",
@@ -26,13 +26,16 @@ var questionArr = [
 
 var score = 0;
 
+//Initial Message and Start Button Generation
+mainPrompt.setAttribute(
+  "style",
+  "display: flex; flex-direction: column; align-items: center;"
+);
 mainPrompt.textContent =
   "Try to answer as many questions in the alotted time. For each question answered incorrectly, 5 seconds will be deducted from the clock. Click the button below to begin.";
-
-main.appendChild(mainPrompt);
-
+body.appendChild(mainPrompt);
 //Start Button
-main.appendChild(startButton);
+mainPrompt.appendChild(startButton);
 startButton.setAttribute("class", "startbtn");
 startButton.textContent = "Start";
 
@@ -42,11 +45,17 @@ startButton.addEventListener("click", begin);
 //Display Time before start of countdown
 timerEl.textContent = "Time left: " + 60 + " Seconds";
 
+//hide quizField until button press
+document.getElementById("quizField").setAttribute("style", "display: none");
+
 //Begin FXN
 function begin() {
   startButton.setAttribute("style", "display: none");
   mainPrompt.textContent = "";
-  //   mainPrompt.textContent = questionNum;
+  document
+    .getElementById("quizField")
+    .setAttribute("style", "display: default");
+  nextQuestion(0);
   countDown();
 }
 
@@ -67,28 +76,52 @@ function countDown() {
   }, 1000);
 }
 
-//cycle through question array
-for (let i = 0; i < questionArr.length; i++) {
-  var question = questionArr[i].question;
-  mainPrompt.write(question);
-  var options = questionArr[i].choices;
-  document.body.appendChild(document.createElement("br"));
-  var name = "radio" + i;
-  for (var opt in options) {
-    var radioEle = document.createElement("input");
-    radioEle.type = "radio";
-    radioEle.value = options[opt];
-    radioEle.name = name;
-    document.body.appendChild(radioEle);
-    var label = document.createElement("Label");
-    label.innerHTML = options[opt];
-    document.body.appendChild(label);
-    document.body.appendChild(document.createElement("br"));
+function nextQuestion(i) {
+  getQuestion();
+  getAnswerOne();
+  getAnswerTwo();
+  getAnswerThree();
+  getAnswerFour();
+
+  function getQuestion() {
+    var questionInner = document.getElementById("question");
+    return (questionInner.textContent = questionArr[i].question);
+  }
+  function getAnswerOne() {
+    var answerOneInner = document.getElementById("answerOne");
+    return (answerOneInner.textContent = questionArr[i].choices[0]);
   }
 
-  document.body.appendChild(document.createElement("br"));
+  function getAnswerTwo() {
+    var answerTwoInner = document.getElementById("answerTwo");
+    return (answerTwoInner.textContent = questionArr[i].choices[1]);
+  }
+
+  function getAnswerThree() {
+    var answerThreeInner = document.getElementById("answerThree");
+    return (answerThreeInner.textContent = questionArr[i].choices[2]);
+  }
+
+  function getAnswerFour() {
+    var answerFourInner = document.getElementById("answerFour");
+    return (answerFourInner.textContent = questionArr[i].choices[3]);
+  }
 }
 
+window.nextQuestionIndex = 1;
+var ansbtn = document.querySelectorAll(".ansbtn");
+ansbtn.forEach((ansbtn) => {
+  ansbtn.addEventListener("click", function () {
+    if (window.nextQuestionIndex < questionArr.length) {
+      nextQuestion(window.nextQuestionIndex);
+      window.nextQuestionIndex++;
+    } else {
+      alert("No more questions!");
+    }
+  });
+});
+
 //Question Logic
+
 //If correct goto next question and add score
 //If incorrect goto next question and deduct 5 seconds from clock
