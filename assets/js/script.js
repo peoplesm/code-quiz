@@ -6,6 +6,11 @@ var startButton = document.createElement("button");
 
 var timerEl = document.getElementById("timer");
 
+var ansOne = document.getElementById("answerOne");
+var ansTwo = document.getElementById("answerTwo");
+var ansThree = document.getElementById("answerThree");
+var ansFour = document.getElementById("answerFour");
+
 var questionArr = [
   {
     question: "What is a variable?",
@@ -15,16 +20,17 @@ var questionArr = [
   {
     question: "What is a function?",
     choices: ["blah", "clah", "cha", "Dah"],
-    answer: 1,
+    answer: "clah",
   },
   {
     question: "What is a loop?",
     choices: ["blah", "clah", "cha", "Dah"],
-    answer: 4,
+    answer: "cha",
   },
 ];
 
 var score = 0;
+var timeLeft = 60;
 
 //Initial Message and Start Button Generation
 mainPrompt.setAttribute(
@@ -60,8 +66,8 @@ function begin() {
 }
 
 //Countdown FXN
+
 function countDown() {
-  var timeLeft = 60;
   timeInterval = setInterval(function () {
     if (timeLeft > 1) {
       timerEl.textContent = "Time left: " + timeLeft + " Seconds";
@@ -76,6 +82,7 @@ function countDown() {
   }, 1000);
 }
 
+//Generates questions and answers from array
 function nextQuestion(i) {
   getQuestion();
   getAnswerOne();
@@ -87,6 +94,7 @@ function nextQuestion(i) {
     var questionInner = document.getElementById("question");
     return (questionInner.textContent = questionArr[i].question);
   }
+
   function getAnswerOne() {
     var answerOneInner = document.getElementById("answerOne");
     return (answerOneInner.textContent = questionArr[i].choices[0]);
@@ -108,20 +116,46 @@ function nextQuestion(i) {
   }
 }
 
-window.nextQuestionIndex = 1;
+//Question Logic and adding to nextQuestionIndex
+nextQuestionIndex = 1;
 var ansbtn = document.querySelectorAll(".ansbtn");
 ansbtn.forEach((ansbtn) => {
   ansbtn.addEventListener("click", function () {
-    if (window.nextQuestionIndex < questionArr.length) {
-      nextQuestion(window.nextQuestionIndex);
-      window.nextQuestionIndex++;
+    if (nextQuestionIndex === 1) {
+      if (ansbtn.textContent === questionArr[0].answer) {
+        console.log("Correct");
+        score = score + 50;
+      } else {
+        console.log("Incorrect");
+        timeLeft = timeLeft - 5;
+      }
+    }
+
+    if (nextQuestionIndex === 2) {
+      if (ansbtn.textContent === questionArr[1].answer) {
+        console.log("Correct");
+        score = score + 50;
+      } else {
+        console.log("Incorrect");
+        timeLeft = timeLeft - 5;
+      }
+    }
+
+    if (nextQuestionIndex === 3) {
+      if (ansbtn.textContent === questionArr[2].answer) {
+        console.log("Correct");
+        score = score + 50;
+      } else {
+        console.log("Incorrect");
+        timeLeft = timeLeft - 5;
+      }
+    }
+
+    if (nextQuestionIndex < questionArr.length) {
+      nextQuestion(nextQuestionIndex);
+      nextQuestionIndex++;
     } else {
-      alert("No more questions!");
+      alert(`No more questions! Score: ${score}`);
     }
   });
 });
-
-//Question Logic
-
-//If correct goto next question and add score
-//If incorrect goto next question and deduct 5 seconds from clock
