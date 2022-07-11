@@ -5,11 +5,7 @@ var mainPrompt = document.createElement("div");
 var startButton = document.createElement("button");
 
 var timerEl = document.getElementById("timer");
-
-var ansOne = document.getElementById("answerOne");
-var ansTwo = document.getElementById("answerTwo");
-var ansThree = document.getElementById("answerThree");
-var ansFour = document.getElementById("answerFour");
+var quizFieldEl = document.getElementById("quizField");
 
 var questionArr = [
   {
@@ -52,7 +48,7 @@ startButton.addEventListener("click", begin);
 timerEl.textContent = "Time left: " + 60 + " Seconds";
 
 //hide quizField until button press
-document.getElementById("quizField").setAttribute("style", "display: none");
+quizFieldEl.setAttribute("style", "display: none");
 
 //Begin FXN
 function begin() {
