@@ -1,8 +1,12 @@
 var body = document.body;
 var main = document.querySelector("main");
+var container = document.querySelector(".container");
 
 var mainPrompt = document.createElement("div");
 var startButton = document.createElement("button");
+var gameOver = document.createElement("div");
+var correct = document.createElement("div");
+var incorrect = document.createElement("div");
 
 var timerEl = document.getElementById("timer");
 var quizFieldEl = document.getElementById("quizField");
@@ -26,16 +30,16 @@ var questionArr = [
 ];
 
 var score = 0;
-var timeLeft = 60;
+var timeLeft = 10;
 
 //Initial Message and Start Button Generation
 mainPrompt.setAttribute(
   "style",
-  "display: flex; flex-direction: column; align-items: center;"
+  "display: flex; flex-direction: column; align-items: center; font-size: 125%; font-weight: bold"
 );
 mainPrompt.textContent =
   "Try to answer as many questions in the alotted time. For each question answered incorrectly, 5 seconds will be deducted from the clock. Click the button below to begin.";
-body.appendChild(mainPrompt);
+container.appendChild(mainPrompt);
 //Start Button
 mainPrompt.appendChild(startButton);
 startButton.setAttribute("class", "startbtn");
@@ -54,9 +58,7 @@ quizFieldEl.setAttribute("style", "display: none");
 function begin() {
   startButton.setAttribute("style", "display: none");
   mainPrompt.textContent = "";
-  document
-    .getElementById("quizField")
-    .setAttribute("style", "display: default");
+  quizFieldEl.setAttribute("style", "display: default");
   nextQuestion(0);
   countDown();
 }
@@ -73,6 +75,8 @@ function countDown() {
       timeLeft--;
     } else {
       timerEl.textContent = "TIMES UP!";
+      clearQuiz();
+
       clearInterval(timeInterval);
     }
   }, 1000);
@@ -121,9 +125,11 @@ ansbtn.forEach((ansbtn) => {
       if (ansbtn.textContent === questionArr[0].answer) {
         console.log("Correct");
         score = score + 50;
+        correctMsg();
       } else {
         console.log("Incorrect");
         timeLeft = timeLeft - 5;
+        incorrectMsg();
       }
     }
 
@@ -131,9 +137,11 @@ ansbtn.forEach((ansbtn) => {
       if (ansbtn.textContent === questionArr[1].answer) {
         console.log("Correct");
         score = score + 50;
+        correctMsg();
       } else {
         console.log("Incorrect");
         timeLeft = timeLeft - 5;
+        incorrectMsg();
       }
     }
 
@@ -141,9 +149,11 @@ ansbtn.forEach((ansbtn) => {
       if (ansbtn.textContent === questionArr[2].answer) {
         console.log("Correct");
         score = score + 50;
+        correctMsg();
       } else {
         console.log("Incorrect");
         timeLeft = timeLeft - 5;
+        incorrectMsg();
       }
     }
 
@@ -151,7 +161,41 @@ ansbtn.forEach((ansbtn) => {
       nextQuestion(nextQuestionIndex);
       nextQuestionIndex++;
     } else {
-      alert(`No more questions! Score: ${score}`);
+      clearQuiz();
     }
   });
 });
+
+//Clear quiz when time is up
+function clearQuiz() {
+  quizFieldEl.setAttribute("style", "display: none");
+  container.appendChild(gameOver);
+  gameOver.setAttribute("style", "text-align: center; font-size: 125%");
+  gameOver.textContent = `Game Over! You scored ${score}`;
+}
+
+//Correct popup
+function correctMsg() {
+  quizFieldEl.appendChild(correct);
+  correct.setAttribute(
+    "style",
+    "text-align: center; font-size: 125%; padding-top 10px"
+  );
+  correct.textContent = "CORRECT +50 points!";
+  setTimeout(function () {
+    correct.textContent = "";
+  }, 1500);
+}
+
+//Incorrect popup
+function incorrectMsg() {
+  quizFieldEl.appendChild(incorrect);
+  incorrect.setAttribute(
+    "style",
+    "text-align: center; font-size: 125%; padding-top 10px"
+  );
+  incorrect.textContent = "INCORRECT - 5 seconds!";
+  setTimeout(function () {
+    incorrect.textContent = "";
+  }, 2000);
+}

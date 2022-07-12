@@ -4,6 +4,10 @@ header {
   justify-content: space-between;
 }
 
+h2 {
+  font-size: 125%;
+}
+
 body {
   width: 100%;
   margin: auto;
@@ -11,9 +15,14 @@ body {
   font-family: "Varela Round", sans-serif;
 }
 
-#quizField {
+.container {
+  width: 75%;
   margin: auto;
-  width: 100%;
+}
+
+#quizField {
+  width: 50%;
+  margin: auto;
   text-align: center;
 }
 
