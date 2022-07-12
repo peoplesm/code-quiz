@@ -13,24 +13,90 @@ var quizFieldEl = document.getElementById("quizField");
 
 var questionArr = [
   {
-    question: "What is a variable?",
-    choices: ["blah", "clah", "cha", "Dah"],
-    answer: "blah",
+    question: "Javascript is an _______ language?",
+    choices: [
+      "Object-Oriented",
+      "Object-Based",
+      "Procedural",
+      "None of the above",
+    ],
+    answer: "Object-Oriented",
   },
   {
-    question: "What is a function?",
-    choices: ["blah", "clah", "cha", "Dah"],
-    answer: "clah",
+    question:
+      "Which of the following is used to define a variable in Javascript?",
+    choices: ["var", "let", "Both A and B", "None of the above"],
+    answer: "Both A and B",
   },
   {
-    question: "What is a loop?",
-    choices: ["blah", "clah", "cha", "Dah"],
-    answer: "cha",
+    question:
+      "Which of the following methods is used to access HTML elements using Javascript?",
+    choices: [
+      "getElementById()",
+      "getElementByClassName()",
+      "Both A and B",
+      "None of the above",
+    ],
+    answer: "Both A and B",
+  },
+  {
+    question:
+      "Upon encountering empty statements, what does the Javascript Interpreter do?",
+    choices: [
+      "Throws and error",
+      "Ignores the statements",
+      "Gives a warning",
+      "None of the above",
+    ],
+    answer: "Ignores the statements",
+  },
+  {
+    question:
+      "Which of the following methods can be used to display data in some form using Javascript?",
+    choices: [
+      "document.write()",
+      "console.log()",
+      "window.alert",
+      "All of the above",
+    ],
+    answer: "All of the above",
+  },
+  {
+    question: "How can a datatype be declared to be a constant type?",
+    choices: ["const", "var", "let", "constant"],
+    answer: "const",
+  },
+  {
+    question:
+      "What keyword is used to check whether a given property is valid or not?",
+    choices: ["in", "is in", "exists", "lies"],
+    answer: "in",
+  },
+  {
+    question:
+      "When an operator’s value is NULL, the typeof returned by the unary operator is:",
+    choices: ["Boolean", "Undefined", "Object", "Integer"],
+    answer: "Object",
+  },
+  {
+    question: "Which of the following are closures in Javascript?",
+    choices: ["Variables", "Functions", "Objects", "All of the above"],
+    answer: "All of the above",
+  },
+  {
+    question: "How to stop an interval timer in Javascript?",
+    choices: [
+      "clearInterval",
+      "clearTimer",
+      "intervalOver",
+      "None of the above",
+    ],
+    answer: "clearInterval",
   },
 ];
 
 var score = 0;
-var timeLeft = 10;
+var timeLeft = 1000;
 
 //Initial Message and Start Button Generation
 mainPrompt.setAttribute(
@@ -121,39 +187,17 @@ nextQuestionIndex = 1;
 var ansbtn = document.querySelectorAll(".ansbtn");
 ansbtn.forEach((ansbtn) => {
   ansbtn.addEventListener("click", function () {
-    if (nextQuestionIndex === 1) {
-      if (ansbtn.textContent === questionArr[0].answer) {
-        console.log("Correct");
-        score = score + 50;
-        correctMsg();
-      } else {
-        console.log("Incorrect");
-        timeLeft = timeLeft - 5;
-        incorrectMsg();
-      }
-    }
-
-    if (nextQuestionIndex === 2) {
-      if (ansbtn.textContent === questionArr[1].answer) {
-        console.log("Correct");
-        score = score + 50;
-        correctMsg();
-      } else {
-        console.log("Incorrect");
-        timeLeft = timeLeft - 5;
-        incorrectMsg();
-      }
-    }
-
-    if (nextQuestionIndex === 3) {
-      if (ansbtn.textContent === questionArr[2].answer) {
-        console.log("Correct");
-        score = score + 50;
-        correctMsg();
-      } else {
-        console.log("Incorrect");
-        timeLeft = timeLeft - 5;
-        incorrectMsg();
+    for (let index = 0; index < questionArr.length; index++) {
+      if (nextQuestionIndex === index + 1) {
+        if (ansbtn.textContent === questionArr[index].answer) {
+          console.log("Correct");
+          score = score + 50;
+          correctMsg();
+        } else {
+          console.log("Incorrect");
+          timeLeft = timeLeft - 5;
+          incorrectMsg();
+        }
       }
     }
 
