@@ -1,5 +1,14 @@
-const host = "http://127.0.0.1:5500/";
-if (window.location.href == host + "index.html") {
+var scores = [];
+
+// Get stored scores from localStorage
+var storedScores = JSON.parse(localStorage.getItem("scores"));
+
+// If scores were retrieved from localStorage, update the scores array to it
+if (storedScores !== null) {
+  scores = storedScores;
+}
+
+if (document.body.classList.contains("index")) {
   var body = document.body;
   var main = document.querySelector("main");
   var container = document.querySelector(".container");
@@ -129,13 +138,14 @@ if (window.location.href == host + "index.html") {
   //Initials score submit button
   initialsSubmit.addEventListener("click", function (event) {
     event.preventDefault();
-    location.href = "highscores.html";
+
     var initScore = {
       initialsInput: initialsInput.value.trim(),
       score: score,
     };
-
-    localStorage.setItem("initScore", JSON.stringify(initScore));
+    scores.push(initScore);
+    localStorage.setItem("scores", JSON.stringify(scores));
+    location.href = "highscores.html";
   });
 
   //Begin FXN
@@ -264,5 +274,21 @@ if (window.location.href == host + "index.html") {
     setTimeout(function () {
       incorrect.textContent = "";
     }, 2000);
+  }
+}
+
+if (document.body.classList.contains("highScores")) {
+  var scoreList = document.querySelector(".scoreList");
+  var backBtn = document.querySelector("#back");
+  backBtn.addEventListener("click", function () {
+    location.href = "index.html";
+  });
+  console.log(scores);
+
+  for (let i = 0; i < scores.length; i++) {
+    var li = document.createElement("li");
+    li.textContent = `${scores[i].initialsInput}: ${scores[i].score}`;
+    li.setAttribute("data-index", i);
+    scoreList.appendChild(li);
   }
 }

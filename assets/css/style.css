@@ -80,6 +80,15 @@ button:hover {
   text-align: center;
 }
 
+.scoreMain {
+  text-align: center;
+  font-size: 125%;
+}
+
+.scoreList li {
+  padding: 5px;
+}
+
 /* Media Queries */
 @media (max-width: 690px) {
   .startbtn {
