@@ -111,7 +111,7 @@ if (document.body.classList.contains("index")) {
   ];
 
   var score = 0;
-  var timeLeft = 1000;
+  var timeLeft = 60;
 
   //Initial Message and Start Button Generation
   mainPrompt.setAttribute(
