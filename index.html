@@ -11,13 +11,13 @@
     <title>Code Quiz</title>
   </head>
 
-  <body>
+  <body class="index">
     <div class="container">
       <header>
-        <h2>View High Scores</h2>
+        <h2><a href="highscores.html" title="High Scores"> High Scores</a></h2>
         <h2 id="timer"></h2>
       </header>
-
+      <!--Main quiz container-->
       <main id="quizField">
         <div id="question"></div>
 
@@ -30,6 +30,17 @@
         <button type="button" class="ansbtn" id="answerFour"></button>
       </main>
     </div>
+    <!-- Submit Form -->
+    <form id="scoreFormContainer" method="POST">
+      <label for="scoreText">Input Initials: </label>
+      <input
+        type="text"
+        placeholder="Initials"
+        name="initials"
+        id="scoreInitials"
+      />
+      <button id="submit">Submit</button>
+    </form>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
