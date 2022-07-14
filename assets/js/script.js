@@ -30,18 +30,18 @@ if (document.body.classList.contains("index")) {
     {
       question: "Javascript is an _______ language?",
       choices: [
-        "Object-Oriented",
         "Object-Based",
+        "Object-Oriented",
         "Procedural",
         "None of the above",
       ],
-      answer: "A. Object-Oriented",
+      answer: "B. Object-Oriented",
     },
     {
       question:
         "Which of the following is used to define a variable in Javascript?",
-      choices: ["var", "let", "Both A and B", "None of the above"],
-      answer: "C. Both A and B",
+      choices: ["var", "let", "const", "All of the above"],
+      answer: "D. All of the above",
     },
     {
       question:
@@ -49,25 +49,25 @@ if (document.body.classList.contains("index")) {
       choices: [
         "getElementById()",
         "getElementByClassName()",
-        "Both A and B",
-        "None of the above",
+        "querySelector()",
+        "All of the above",
       ],
-      answer: "C. Both A and B",
+      answer: "D. All of the above",
     },
     {
       question:
         "Upon encountering empty statements, what does the Javascript Interpreter do?",
       choices: [
         "Throws and error",
-        "Ignores the statements",
         "Gives a warning",
+        "Ignores the statements",
         "None of the above",
       ],
-      answer: "B. Ignores the statements",
+      answer: "C. Ignores the statements",
     },
     {
       question:
-        "Which of the following methods can be used to display data in some form using Javascript?",
+        "What method(s) can be used to display data in some form using Javascript?",
       choices: [
         "document.write()",
         "console.log()",
@@ -77,29 +77,38 @@ if (document.body.classList.contains("index")) {
       answer: "D. All of the above",
     },
     {
-      question: "How can a datatype be declared to be a constant type?",
-      choices: ["const", "var", "let", "constant"],
-      answer: "A. const",
+      question: "How do you turn an object into a string using JSON?",
+      choices: ["JSON.stringify", "JSON.string", "JSON.noodle", "constant"],
+      answer: "A. JSON.stringify",
     },
     {
       question:
-        "What keyword is used to check whether a given property is valid or not?",
-      choices: ["in", "is in", "exists", "lies"],
-      answer: "A. in",
+        "How do you stop a form from clearing before the data can be stored on submit?",
+      choices: [
+        "event.preventDefault()",
+        "event.stop()",
+        "event.wait",
+        "event.prevent",
+      ],
+      answer: "A. event.preventDefault()",
     },
     {
-      question:
-        "When an operator’s value is NULL, the typeof returned by the unary operator is:",
-      choices: ["Boolean", "Undefined", "Object", "Integer"],
-      answer: "C. Object",
+      question: "What is NaN?",
+      choices: ["Boolean", "Undefined", "Object", "Number"],
+      answer: "D. Number",
     },
     {
-      question: "Which of the following are closures in Javascript?",
-      choices: ["Variables", "Functions", "Objects", "All of the above"],
-      answer: "D. All of the above",
+      question: "What does DOM stand for?",
+      choices: [
+        "Document Orient Mode",
+        "Document Object Mode",
+        "Dominate Over Macs",
+        "Document Object Model",
+      ],
+      answer: "D. Document Object Model",
     },
     {
-      question: "How to stop an interval timer in Javascript?",
+      question: "How do you stop an interval timer in Javascript?",
       choices: [
         "clearInterval",
         "clearTimer",
