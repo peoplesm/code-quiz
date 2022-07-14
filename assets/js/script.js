@@ -35,13 +35,13 @@ if (document.body.classList.contains("index")) {
         "Procedural",
         "None of the above",
       ],
-      answer: "Object-Oriented",
+      answer: "A. Object-Oriented",
     },
     {
       question:
         "Which of the following is used to define a variable in Javascript?",
       choices: ["var", "let", "Both A and B", "None of the above"],
-      answer: "Both A and B",
+      answer: "C. Both A and B",
     },
     {
       question:
@@ -52,7 +52,7 @@ if (document.body.classList.contains("index")) {
         "Both A and B",
         "None of the above",
       ],
-      answer: "Both A and B",
+      answer: "C. Both A and B",
     },
     {
       question:
@@ -63,7 +63,7 @@ if (document.body.classList.contains("index")) {
         "Gives a warning",
         "None of the above",
       ],
-      answer: "Ignores the statements",
+      answer: "B. Ignores the statements",
     },
     {
       question:
@@ -74,29 +74,29 @@ if (document.body.classList.contains("index")) {
         "window.alert",
         "All of the above",
       ],
-      answer: "All of the above",
+      answer: "D. All of the above",
     },
     {
       question: "How can a datatype be declared to be a constant type?",
       choices: ["const", "var", "let", "constant"],
-      answer: "const",
+      answer: "A. const",
     },
     {
       question:
         "What keyword is used to check whether a given property is valid or not?",
       choices: ["in", "is in", "exists", "lies"],
-      answer: "in",
+      answer: "A. in",
     },
     {
       question:
         "When an operator’s value is NULL, the typeof returned by the unary operator is:",
       choices: ["Boolean", "Undefined", "Object", "Integer"],
-      answer: "Object",
+      answer: "C. Object",
     },
     {
       question: "Which of the following are closures in Javascript?",
       choices: ["Variables", "Functions", "Objects", "All of the above"],
-      answer: "All of the above",
+      answer: "D. All of the above",
     },
     {
       question: "How to stop an interval timer in Javascript?",
@@ -106,7 +106,7 @@ if (document.body.classList.contains("index")) {
         "intervalOver",
         "None of the above",
       ],
-      answer: "clearInterval",
+      answer: "A. clearInterval",
     },
   ];
 
