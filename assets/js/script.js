@@ -119,10 +119,11 @@ if (document.body.classList.contains("index")) {
     "display: flex; flex-direction: column; align-items: center; font-size: 125%; font-weight: bold"
   );
   mainPrompt.textContent =
-    "Try to answer as many questions in the alotted time. For each question answered incorrectly, 5 seconds will be deducted from the clock. Click the button below to begin.";
+    "Try to answer as many questions in the alotted time. For each question answered correctly you are awared 50 points. For each question answered incorrectly, 5 seconds will be deducted from the clock. Click the button below to begin. Good Luck!";
   container.appendChild(mainPrompt);
   //Start Button
   mainPrompt.appendChild(startButton);
+  mainPrompt.setAttribute("class", "mainprompt");
   startButton.setAttribute("class", "startbtn");
   startButton.textContent = "Start";
 
@@ -151,7 +152,7 @@ if (document.body.classList.contains("index")) {
   //Begin FXN
   function begin() {
     startButton.setAttribute("style", "display: none");
-    mainPrompt.textContent = "";
+    mainPrompt.setAttribute("style", "display: none");
     quizFieldEl.setAttribute("style", "display");
     nextQuestion(0);
     countDown();
@@ -191,22 +192,22 @@ if (document.body.classList.contains("index")) {
 
     function getAnswerOne() {
       var answerOneInner = document.getElementById("answerOne");
-      return (answerOneInner.textContent = questionArr[i].choices[0]);
+      return (answerOneInner.textContent = "A. " + questionArr[i].choices[0]);
     }
 
     function getAnswerTwo() {
       var answerTwoInner = document.getElementById("answerTwo");
-      return (answerTwoInner.textContent = questionArr[i].choices[1]);
+      return (answerTwoInner.textContent = "B. " + questionArr[i].choices[1]);
     }
 
     function getAnswerThree() {
       var answerThreeInner = document.getElementById("answerThree");
-      return (answerThreeInner.textContent = questionArr[i].choices[2]);
+      return (answerThreeInner.textContent = "C. " + questionArr[i].choices[2]);
     }
 
     function getAnswerFour() {
       var answerFourInner = document.getElementById("answerFour");
-      return (answerFourInner.textContent = questionArr[i].choices[3]);
+      return (answerFourInner.textContent = "D. " + questionArr[i].choices[3]);
     }
   }
 
@@ -242,7 +243,10 @@ if (document.body.classList.contains("index")) {
   function clearQuiz() {
     quizFieldEl.setAttribute("style", "display: none");
     container.appendChild(gameOver);
-    gameOver.setAttribute("style", "text-align: center; font-size: 125%");
+    gameOver.setAttribute(
+      "style",
+      "text-align: center; font-size: 125%; padding: 2px; background-color: darkgray; border-left: solid black; border-right: solid black; padding: 3px;"
+    );
     gameOver.textContent = `Game Over! You scored ${score}`;
     scoreFormContainer.setAttribute(
       "style",
@@ -277,14 +281,18 @@ if (document.body.classList.contains("index")) {
   }
 }
 
+//High Score Page back button and reset button
 if (document.body.classList.contains("highScores")) {
   var scoreList = document.querySelector(".scoreList");
   var backBtn = document.querySelector("#back");
   backBtn.addEventListener("click", function () {
     location.href = "index.html";
   });
-  console.log(scores);
-
+  var resetBtn = document.querySelector("#reset");
+  resetBtn.addEventListener("click", function () {
+    localStorage.clear();
+    location.href = "highscores.html";
+  });
   for (let i = 0; i < scores.length; i++) {
     var li = document.createElement("li");
     li.textContent = `${scores[i].initialsInput}: ${scores[i].score}`;

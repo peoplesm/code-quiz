@@ -1,7 +1,19 @@
+body {
+  width: 100%;
+  margin: auto;
+  font-family: serif;
+  font-family: "Varela Round", sans-serif;
+}
+
 header {
   display: flex;
   padding: 15px;
   justify-content: space-between;
+  border: solid black;
+  border-radius: 15px 15px 0px 0px;
+  background-color: rgb(65, 109, 109);
+  color: aliceblue;
+  align-items: center;
 }
 
 h1 {
@@ -13,22 +25,43 @@ h2 {
   font-size: 125%;
 }
 
-body {
-  width: 100%;
-  margin: auto;
-  font-family: serif;
-  font-family: "Varela Round", sans-serif;
+/* Link Stuff */
+a {
+  text-decoration: none;
+  color: aliceblue;
 }
 
+a:hover {
+  color: rgb(12, 173, 47);
+}
+
+a::after {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+/* Main section of quiz */
 .container {
-  width: 75%;
+  width: 50%;
   margin: auto;
+}
+
+.mainprompt {
+  background-color: darkgray;
+  border-bottom: solid black;
+  border-left: solid black;
+  border-right: solid black;
+  padding: 3px;
 }
 
 #quizField {
-  width: 50%;
   margin: auto;
-  /* text-align: center; */
+  background-color: darkgray;
+  border-bottom: solid black;
+  border-left: solid black;
+  border-right: solid black;
+  padding: 3px;
+  text-align: center;
 }
 
 #question {
@@ -38,6 +71,7 @@ body {
   text-align: center;
 }
 
+/* Button Stuff */
 .ansbtn {
   font-size: 16px;
   font-weight: 500;
@@ -48,8 +82,21 @@ button {
   color: white;
   background-color: forestgreen;
   border-radius: 5px;
-  border: 0px;
+  border: solid black 2px;
   margin: 10px;
+  width: 30%;
+}
+
+#submit {
+  width: fit-content;
+}
+
+#back {
+  width: fit-content;
+}
+
+#reset {
+  width: fit-content;
 }
 
 button:hover {
@@ -59,7 +106,7 @@ button:hover {
 .startbtn {
   display: flex;
   justify-content: center;
-  border: none;
+  border: solid black 2px;
   width: 10%;
   background-color: rgb(12, 173, 47);
   border-radius: 25px;
@@ -71,8 +118,16 @@ button:hover {
   cursor: pointer;
 }
 
+/*Score Board Page*/
 #scoreFormContainer {
   display: none;
+  background-color: darkgray;
+  border-bottom: solid black;
+  border-left: solid black;
+  border-right: solid black;
+  padding: 3px;
+  width: 50%;
+  margin: auto;
 }
 
 .highScoreHeader {
@@ -83,6 +138,10 @@ button:hover {
 .scoreMain {
   text-align: center;
   font-size: 125%;
+  background-color: darkgray;
+  border-bottom: solid black;
+  border-left: solid black;
+  border-right: solid black;
 }
 
 .scoreList li {
