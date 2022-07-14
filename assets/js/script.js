@@ -7,7 +7,7 @@ var storedScores = JSON.parse(localStorage.getItem("scores"));
 if (storedScores !== null) {
   scores = storedScores;
 }
-
+//JS specific to the index.html
 if (document.body.classList.contains("index")) {
   var body = document.body;
   var main = document.querySelector("main");
@@ -125,6 +125,7 @@ if (document.body.classList.contains("index")) {
   mainPrompt.appendChild(startButton);
   mainPrompt.setAttribute("class", "mainprompt");
   startButton.setAttribute("class", "startbtn");
+  startButton.setAttribute("title", "Start");
   startButton.textContent = "Start";
 
   //Start Button Starts Timer
@@ -159,7 +160,6 @@ if (document.body.classList.contains("index")) {
   }
 
   //Countdown FXN
-
   function countDown() {
     timeInterval = setInterval(function () {
       if (timeLeft > 1) {
